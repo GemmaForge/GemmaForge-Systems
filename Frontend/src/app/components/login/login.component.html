@@ -1,0 +1,43 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>GemmaForge Enterprise</h2>
+    <p class="subtitle">Secure CUDA to ROCm Orchestration Platform</p>
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">Corporate Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="credentials.email"
+          required
+          placeholder="developer@company.com">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="credentials.password"
+          required
+          placeholder="••••••••">
+      </div>
+
+      <div *ngIf="errorMessage" class="error-banner">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit" [disabled]="!loginForm.form.valid" class="btn-login">
+        Authenticate System Access
+      </button>
+
+      <!-- Add this below your login button -->
+      <div class="text-center mt-4">
+        <a routerLink="/register" style="color: #3b82f6; font-size: 0.85rem; text-decoration: none;">Need an account? Sign up here</a>
+      </div>
+    </form>
+  </div>
+</div>

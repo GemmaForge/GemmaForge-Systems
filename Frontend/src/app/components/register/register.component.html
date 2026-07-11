@@ -1,0 +1,54 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Join GemmaForge</h2>
+    <p class="subtitle">Register for Enterprise Access</p>
+
+    <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+
+      <div class="form-group">
+        <label for="username">Developer Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="userData.username"
+          required
+          placeholder="e.g.dev_user1">
+
+      </div>
+      <div class="form-group">
+        <label for="email">Corporate Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="userData.email"
+               required email #emailInput="ngModel" placeholder="developer@company.com">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password(minimium legth 6 characters)</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="userData.password"
+          required
+          minlength="6"
+          placeholder="••••••••">
+      </div>
+
+      <div *ngIf="errorMessage" class="error-banner">
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="successMessage" class="success-banner">
+        {{ successMessage }}
+      </div>
+
+      <button type="submit" [disabled]="!registerForm.form.valid" class="btn-login">
+        Create Account
+      </button>
+
+      <div class="text-center mt-4">
+        <a routerLink="/login" class="link-text">Already have an account? Log in</a>
+      </div>
+    </form>
+  </div>
+</div>

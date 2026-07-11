@@ -1,0 +1,53 @@
+<div class="min-h-screen bg-slate-50 text-slate-900 font-sans p-6 md:p-12">
+
+  <!-- Minimal Header with Back Button -->
+  <header class="max-w-4xl mx-auto mb-8 flex justify-between items-center">
+    <div>
+      <h1 class="text-4xl font-extrabold tracking-tighter text-slate-900">Diagnostic Center</h1>
+      <p class="text-slate-500 mt-2">GemmaForge AI Compiler Analysis</p>
+    </div>
+    <a routerLink="/" class="px-6 py-2 bg-white border border-slate-200 rounded-lg shadow-sm font-bold text-sm text-slate-600 hover:bg-slate-100 transition-all">
+      &larr; Back to Dashboard
+    </a>
+  </header>
+
+  <!-- ROCm Advisor Main UI -->
+  <main class="max-w-4xl mx-auto">
+    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm mt-4">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="text-3xl">🤖</span>
+        <div>
+          <h2 class="text-xl font-bold">ROCm Advisor</h2>
+          <p class="text-sm text-slate-500">Instant AI diagnostics for HIP compiler failures.</p>
+        </div>
+      </div>
+
+      <textarea
+        [(ngModel)]="compilerLogs"
+        placeholder="Paste raw compiler logs (e.g., error: no matching function for call to...)"
+        class="w-full h-40 p-4 rounded-xl border border-slate-200 font-mono text-sm mb-4 focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+      </textarea>
+
+      <div class="flex gap-4">
+        <button (click)="diagnoseLogs()" [disabled]="!compilerLogs || isDiagnosing"
+                class="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 disabled:bg-slate-300 transition-all shadow-lg">
+          {{ isDiagnosing ? 'Analyzing Compiler Logs...' : 'Diagnose Error' }}
+        </button>
+      </div>
+
+      <!-- Results View -->
+      <div *ngIf="diagnosisResult" class="mt-8 p-6 bg-[#0f172a] rounded-2xl text-slate-200 border border-slate-700 shadow-inner">
+        <h4 class="font-bold text-indigo-400 mb-4 flex items-center gap-2 text-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Advisor Insight
+        </h4>
+
+        <div class="whitespace-pre-wrap font-sans text-sm leading-relaxed text-slate-300" [innerHTML]="diagnosisResult"></div>
+
+        <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
+          <button (click)="diagnosisResult = ''; compilerLogs = ''" class="text-xs font-bold text-slate-400 hover:text-white uppercase tracking-wider transition-colors">Clear Diagnostics</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

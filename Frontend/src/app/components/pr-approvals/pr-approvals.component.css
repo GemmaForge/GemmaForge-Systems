@@ -1,0 +1,9 @@
+/* pr-approvals.component.css */
+
+/* Since we are using Tailwind, this file remains empty.
+   Custom styles for this specific component can be added here if needed. */
+
+:host {
+  display: block;
+  width: 100%;
+}

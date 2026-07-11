@@ -1,0 +1,35 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1e293b;
+  color: white;
+  border-bottom: 3px solid #3b82f6;
+}
+
+.brand { display: flex; align-items: center; gap: 1rem; }
+.brand h1 { margin: 0; font-size: 1.5rem; }
+.badge { background: #3b82f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+
+.user-controls { display: flex; align-items: center; gap: 2rem; }
+.role-pill { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.85rem; font-weight: bold; margin-left: 0.5rem;}
+.role-pill.engineer { background-color: #10b981; color: white; }
+.role-pill.reviewer { background-color: #f59e0b; color: white; }
+
+.role-switcher button {
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid #475569;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.role-switcher button.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
